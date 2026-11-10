@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الخطة التسويقية — متجر القماش</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { overflow-x: hidden; max-width: 100%; }
+body { font-family: 'Cairo', 'Segoe UI', 'Tahoma', Arial, sans-serif; line-height: 1.7; color: #1a1a1a; background: #f7f1e8; direction: rtl; }
+.container { max-width: 1100px; margin: 0 auto; padding: 24px 14px; width: 100%; }
+
+.header { background: linear-gradient(135deg, #2a0606 0%, #4a0d0d 55%, #6b1414 100%); color: white; padding: 36px 20px; border-radius: 16px; margin-bottom: 24px; text-align: center; position: relative; overflow: hidden; }
+.header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at center, rgba(255,255,255,0.06) 0%, transparent 60%); }
+.header .brand { font-size: 30px; font-weight: 900; color: #fff; margin-bottom: 6px; position: relative; letter-spacing: 1px; }
+.header .brand span { color: #d9ad52; }
+.header h1 { font-size: 16px; font-weight: 500; opacity: 0.85; margin-bottom: 6px; position: relative; }
+.accent-bar { height: 4px; width: 80px; background: #d9ad52; margin: 12px auto; border-radius: 2px; }
+.platform-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.14); border-radius: 24px; padding: 8px 16px; font-size: 13px; font-weight: 700; margin-top: 12px; position: relative; flex-wrap: wrap; justify-content: center; }
+
+.section { background: white; border-radius: 12px; padding: 20px 16px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow: hidden; }
+.section-title { font-size: 18px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; border-right: 5px solid #6b1414; padding-right: 12px; }
+.section-sub { font-size: 13px; color: #64748b; margin-bottom: 18px; padding-right: 17px; }
+.sub-head { font-size: 13px; font-weight: 700; color: #4a0d0d; margin: 18px 0 8px; }
+
+.metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+@media (min-width: 600px) { .metrics-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); } }
+.metric-card { padding: 16px; border-radius: 10px; border: 2px solid #eee3d3; position: relative; }
+.metric-card.dark { background: linear-gradient(135deg, #2a0606, #401010); color: white; border: none; }
+.metric-card.olive { background: linear-gradient(135deg, #6b1414, #4a0d0d); color: white; border: none; }
+.metric-card.gold { background: linear-gradient(135deg, #c3922f, #9c7020); color: white; border: none; }
+.metric-card.blue { background: linear-gradient(135deg, #1565c0, #0d47a1); color: white; border: none; }
+.metric-card.muted { background: #faf6ef; }
+.metric-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.8; margin-bottom: 4px; }
+.metric-value { font-size: 20px; font-weight: 700; line-height: 1.1; }
+.metric-sub { font-size: 11px; opacity: 0.75; margin-top: 4px; }
+
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 10px; border: 1px solid #eee3d3; }
+.cmp-table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 12.5px; }
+.cmp-table th { background: #2a0606; color: white; padding: 10px 12px; text-align: right; font-size: 11.5px; font-weight: 700; white-space: nowrap; }
+.cmp-table th.us { background: #9c7020; }
+.cmp-table td { padding: 10px 12px; border-bottom: 1px solid #f0e8db; vertical-align: top; color: #334155; }
+.cmp-table td:first-child { font-weight: 700; color: #1a1a1a; background: #faf6ef; white-space: nowrap; }
+.cmp-table td.us { background: #fff8e8; }
+.cmp-table tr:last-child td { border-bottom: none; }
+.cmp-table tr.grand-total td { background: #2a0606; color: white; font-weight: 700; }
+
+.badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+.badge-olive { background: #f6e3e3; color: #6b1414; }
+.badge-gold { background: #fef3c7; color: #92400e; }
+.badge-green { background: #d1fae5; color: #065f46; }
+.badge-red { background: #fee2e2; color: #991b1b; }
+.badge-blue { background: #dbeafe; color: #1e40af; }
+
+.insight-box { border-radius: 10px; padding: 20px; margin-bottom: 16px; border-right: 4px solid; }
+.insight-box.critical { background: #fff5f5; border-color: #e53935; }
+.insight-box.warning { background: #fffbeb; border-color: #f59e0b; }
+.insight-box.success { background: #f0fdf4; border-color: #22c55e; }
+.insight-box.info { background: #fbf4f4; border-color: #6b1414; }
+.insight-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.critical .insight-title { color: #991b1b; }
+.warning .insight-title { color: #92400e; }
+.success .insight-title { color: #14532d; }
+.info .insight-title { color: #4a0d0d; }
+.insight-text { font-size: 13px; line-height: 1.7; color: #475569; }
+.action-list { margin-top: 10px; margin-right: 16px; }
+.action-list li { font-size: 13px; color: #334155; margin-bottom: 4px; }
+
+.swot-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 700px) { .swot-grid { grid-template-columns: 1fr 1fr; } }
+.swot-card { border-radius: 12px; padding: 18px; border-top: 5px solid; }
+.swot-card.s { background: #f0fdf4; border-color: #16a34a; }
+.swot-card.w { background: #fff5f5; border-color: #dc2626; }
+.swot-card.o { background: #eff6ff; border-color: #2563eb; }
+.swot-card.t { background: #fffbeb; border-color: #d97706; }
+.swot-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.swot-letter { width: 34px; height: 34px; border-radius: 8px; color: white; font-weight: 900; font-size: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.s .swot-letter { background: #16a34a; } .w .swot-letter { background: #dc2626; } .o .swot-letter { background: #2563eb; } .t .swot-letter { background: #d97706; }
+.swot-title { font-size: 15px; font-weight: 700; }
+.s .swot-title { color: #14532d; } .w .swot-title { color: #991b1b; } .o .swot-title { color: #1e3a8a; } .t .swot-title { color: #92400e; }
+.swot-list { margin-right: 18px; }
+.swot-list li { font-size: 12.5px; color: #334155; margin-bottom: 7px; line-height: 1.7; }
+
+.comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 18px; }
+.platform-card { border-radius: 12px; padding: 18px; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.07); border: 1px solid #f0e8db; border-right-width: 4px; border-right-color: #6b1414; }
+.platform-card-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+.platform-card-url { font-size: 11px; color: #64748b; margin-bottom: 10px; direction: ltr; text-align: right; }
+.mini-label { font-size: 11px; font-weight: 700; margin: 10px 0 4px; }
+.mini-label.plus { color: #15803d; } .mini-label.minus { color: #b91c1c; }
+.mini-list { margin-right: 16px; }
+.mini-list li { font-size: 12px; color: #475569; margin-bottom: 3px; }
+
+.pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.pillar-card { padding: 16px; border-radius: 10px; background: #faf6ef; border-right: 4px solid #6b1414; }
+.pillar-title { font-size: 13px; font-weight: 700; color: #4a0d0d; margin-bottom: 6px; }
+.pillar-text { font-size: 12px; color: #475569; line-height: 1.7; }
+
+.objective-list { display: flex; flex-direction: column; gap: 12px; }
+.objective-item { padding: 16px 18px; border-radius: 10px; background: #faf6ef; border-right: 4px solid #6b1414; display: flex; gap: 14px; align-items: flex-start; }
+.objective-num { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg,#6b1414,#4a0d0d); color: white; font-weight: 700; font-size: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.objective-body { flex: 1; }
+.objective-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.objective-title { font-size: 14px; font-weight: 700; color: #1a1a1a; }
+.objective-text { font-size: 12.5px; color: #475569; line-height: 1.7; }
+
+.idea-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.idea-card { padding: 16px; border-radius: 10px; background: #faf6ef; border-right: 4px solid #c3922f; }
+.idea-num { display: inline-flex; width: 22px; height: 22px; border-radius: 50%; background: #c3922f; color: white; font-size: 11px; font-weight: 700; align-items: center; justify-content: center; margin-left: 6px; flex-shrink: 0; }
+.idea-title { font-size: 13px; font-weight: 700; color: #7c5a05; margin-bottom: 6px; display: flex; align-items: center; }
+.idea-text { font-size: 12px; color: #475569; line-height: 1.7; }
+
+.month-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 800px) { .month-grid { grid-template-columns: repeat(3, 1fr); } }
+.month-card { border-radius: 12px; overflow: hidden; border: 1px solid #eee3d3; background: #fff; }
+.month-top { padding: 14px 16px; color: white; }
+.month-card.m1 .month-top { background: linear-gradient(135deg, #4a0d0d, #6b1414); }
+.month-card.m2 .month-top { background: linear-gradient(135deg, #9c7020, #c3922f); }
+.month-card.m3 .month-top { background: linear-gradient(135deg, #2a0606, #4a0d0d); }
+.month-name { font-size: 12px; opacity: 0.8; font-weight: 600; }
+.month-theme { font-size: 16px; font-weight: 800; margin-top: 2px; }
+.month-budget { font-size: 12px; margin-top: 6px; background: rgba(255,255,255,0.16); display: inline-block; padding: 3px 10px; border-radius: 12px; font-weight: 700; }
+.month-body { padding: 14px 16px; }
+.month-body .mini-label { color: #4a0d0d; margin-top: 4px; }
+.month-body ul { margin-right: 16px; margin-bottom: 10px; }
+.month-body li { font-size: 12px; color: #475569; margin-bottom: 4px; line-height: 1.65; }
+.gate { font-size: 11.5px; background: #faf6ef; border-radius: 8px; padding: 8px 10px; color: #4a0d0d; border-right: 3px solid #c3922f; }
+
+.kw-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.kw-card { padding: 14px; border-radius: 10px; background: #faf6ef; border: 1px solid #eee3d3; }
+.kw-title { font-size: 12.5px; font-weight: 700; color: #4a0d0d; margin-bottom: 8px; }
+.kw-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.kw-tag { font-size: 11px; background: white; border: 1px solid #e6d8c3; border-radius: 12px; padding: 2px 9px; color: #334155; }
+.kw-card.neg { background: #fff5f5; border-color: #fecaca; }
+.kw-card.neg .kw-title { color: #991b1b; }
+.kw-card.neg .kw-tag { border-color: #fecaca; }
+
+.challenge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.challenge-card { border-radius: 10px; padding: 16px; background: #fff; border: 1px solid #f0e8db; border-right: 4px solid #dc2626; }
+.challenge-card.mid { border-right-color: #f59e0b; }
+.challenge-title { font-size: 13.5px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.challenge-text { font-size: 12px; color: #475569; line-height: 1.7; }
+.challenge-fix { font-size: 12px; color: #14532d; background: #f0fdf4; border-radius: 8px; padding: 8px 10px; margin-top: 8px; line-height: 1.65; }
+
+@media (min-width: 600px) {
+    .header .brand { font-size: 40px; }
+    .header h1 { font-size: 20px; }
+    .metric-value { font-size: 24px; }
+    .section { padding: 28px 24px; }
+    .section-title { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="brand">متجر <span>القماش</span></div>
+        <h1>تحليل النشاط والمتجر والسوشيال ميديا · تحليل SWOT · تحليل المنافسين · الخطة الاستراتيجية</h1>
+        <div class="accent-bar"></div>
+        <div class="platform-badge">🧵 Google Ads · TikTok · Instagram · WhatsApp</div>
+    </div>
+
+    <!-- BUSINESS SNAPSHOT -->
+    <div class="section" style="border-top: 4px solid #6b1414;">
+        <h2 class="section-title">🔎 نظرة عامة على النشاط</h2>
+
+        <div class="metrics-grid">
+            <div class="metric-card olive">
+                <div class="metric-label">المنصة</div>
+                <div class="metric-value">سلة</div>
+                <div class="metric-sub">alqmash.com</div>
+            </div>
+            <div class="metric-card dark">
+                <div class="metric-label">الخبرة في السوق</div>
+                <div class="metric-value">+22 عاماً</div>
+                <div class="metric-sub">علامة سعودية · سجل تجاري ظاهر</div>
+            </div>
+            <div class="metric-card gold">
+                <div class="metric-label">المعرض الفعلي</div>
+                <div class="metric-value">جدة</div>
+                <div class="metric-sub">مجمع الشرق رقم 1 · بوابة 5</div>
+            </div>
+            <div class="metric-card muted">
+                <div class="metric-label">نطاق الأسعار</div>
+                <div class="metric-value">69 – 1,200 ر.س</div>
+                <div class="metric-sub">من متر الكريب إلى البانو المشكوك يدوياً</div>
+            </div>
+        </div>
+
+        <div class="pillar-grid">
+            <div class="pillar-card">
+                <div class="pillar-title">🧵 طبيعة النشاط</div>
+                <div class="pillar-text">محل أقمشة قائم في جدة متخصص في <b>أقمشة السهرات والمطرزات</b>، يبيع عبر المعرض والمتجر الإلكتروني ويشحن داخل المملكة ولعدد من الدول الخارجية.</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-title">🛍️ الأقسام الرئيسية</div>
+                <div class="pillar-text"><b>أقمشة:</b> سهرات، عبايات (كريب ولوميير بالمتر)، سادة، خامات ومشجرات، وقطع وبانوهات مطرزة بشك يدوي. <b>جاهز:</b> فساتين سهرة وناعمة ودانتيل ومنفوشة، ومرايل مدرسية.</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-title">👥 الجمهور المستهدف</div>
+                <div class="pillar-text">نساء يفصّلن فساتين المناسبات والأعراس، المصممات والمشاغل وخيّاطات المنازل، مشتريات أقمشة العبايات، وأمهات الطالبات (المرايل وفساتين البنات).</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-title">💳 الدفع والشحن</div>
+                <div class="pillar-text">مدى، Visa/Mastercard، Apple Pay، STC Bank، <b>تابي وتمارا</b>. التجهيز خلال 1–3 أيام عمل ثم الشحن خلال 2–5 أيام للمدن الرئيسية، ورسوم الشحن تُحتسب عند الدفع.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STORE ANALYSIS -->
+    <div class="section" style="border-top: 4px solid #c3922f;">
+        <h2 class="section-title" style="border-color:#c3922f;">🏬 تحليل المتجر الإلكتروني</h2>
+        <div class="section-sub">ملاحظات مبنية على تصفّح المتجر وصفحات المنتجات — نوفمبر 2026</div>
+
+        <div class="insight-box success">
+            <div class="insight-title">✅ ما يعمل بشكل جيد</div>
+            <ul class="action-list">
+                <li>وصف تفصيلي احترافي للقطع المطرزة يشرح الخامة وتقنية الشك والاستخدامات المقترحة.</li>
+                <li>تقسيط تمارا ظاهر في صفحة المنتج، وتابي ضمن وسائل الدفع — مهم مع قطع تصل إلى 1,200 ر.س.</li>
+                <li>هوية بصرية فاخرة متسقة (العنابي والذهبي) وصور فساتين بجودة عالية في الواجهة.</li>
+                <li>آراء عملاء من مدن مختلفة (الرياض، جدة، الدمام) والسجل التجاري ظاهر في التذييل.</li>
+            </ul>
+        </div>
+
+        <div class="insight-box critical">
+            <div class="insight-title">🔴 ما يحتاج معالجة قبل الإنفاق الإعلاني</div>
+            <ul class="action-list">
+                <li><b>بانر وعروض «اليوم الوطني» ما زالت ظاهرة</b> في الواجهة وعلى المنتجات رغم انتهاء المناسبة — يُضعف الثقة ويتعارض مع رسالة أي إعلان جديد.</li>
+                <li><b>غياب المواصفات الفنية للأقمشة</b>: لا يُذكر عرض القماش، ولا نسبة الخامة، ولا مقاس البانو أو القطعة، ولا تعليمات العناية — وهي أول أسئلة مشترية القماش.</li>
+                <li><b>لا يوجد خيار عينات (Swatches)</b>، بينما يقدّمه منافس مباشر في قسم مستقل.</li>
+                <li><b>حشو كلمات مفتاحية</b> في آخر الوصف وفي روابط المنتجات، وبعضها لا يطابق المنتج (مثل «قماش بنفسجي» على قطعة وردية).</li>
+                <li><b>ثلاثة أرقام تواصل مختلفة</b>: رقم في المتجر، وآخر في TikTok، وثالث في Instagram وSnapchat — يشتّت المحادثات ويمنع قياسها.</li>
+                <li><b>عنوان المعرض غير مذكور في المتجر</b> ولا يوجد رابط خرائط Google، رغم أن المعرض الفعلي ميزة الثقة الأقوى.</li>
+                <li>لا يوجد رابط لحساب Instagram في التذييل، ولا تقييمات بالنجوم على المنتجات.</li>
+                <li>«منتجات مشابهة» في صفحة القماش تعرض فساتين جاهزة بدلاً من مكمّلات التفصيل (بطانة، قماش سادة مطابق).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SOCIAL MEDIA & CONTENT -->
+    <div class="section" style="border-top: 4px solid #2a0606;">
+        <h2 class="section-title" style="border-color:#2a0606;">📱 تحليل السوشيال ميديا والمحتوى الإعلاني</h2>
+        <div class="section-sub">الأرقام كما ظهرت في الحسابات العامة — نوفمبر 2026</div>
+
+        <div class="metrics-grid">
+            <div class="metric-card dark">
+                <div class="metric-label">TikTok · al_gmash3</div>
+                <div class="metric-value">66.3K متابع</div>
+                <div class="metric-sub">229.9K إعجاب</div>
+            </div>
+            <div class="metric-card olive">
+                <div class="metric-label">Snapchat · alqmashq</div>
+                <div class="metric-value">5.9K متابع</div>
+                <div class="metric-sub">نشط ويذكر الشحن لدول الخليج</div>
+            </div>
+            <div class="metric-card gold">
+                <div class="metric-label">Instagram · alqmash1</div>
+                <div class="metric-value">146 متابعاً</div>
+                <div class="metric-sub">53 منشوراً</div>
+            </div>
+            <div class="metric-card muted">
+                <div class="metric-label">مشاهدات أحدث فيديوهات TikTok</div>
+                <div class="metric-value">200 – 4.5K</div>
+                <div class="metric-sub">مقابل 870K لأعلى فيديو مثبت</div>
+            </div>
+        </div>
+
+        <div class="insight-box warning">
+            <div class="insight-title">⚠️ تراجع حاد في الوصول العضوي على TikTok</div>
+            <div class="insight-text">الفيديوهات المثبتة حققت 870.7K و266K و131.9K مشاهدة، بينما تتراوح أغلب الفيديوهات الأحدث بين 200 و4,500 مشاهدة. الحساب يملك قاعدة متابعين كبيرة، لكن المحتوى الحالي لم يعد يصل إليها، ما يعني أن الإعلانات ستحتاج إلى زوايا إبداعية جديدة وليس تكرار الأسلوب نفسه.</div>
+        </div>
+
+        <div class="pillar-grid">
+            <div class="pillar-card">
+                <div class="pillar-title">🎥 أسلوب المحتوى الحالي</div>
+                <div class="pillar-text">فيديوهات داخل المعرض لموظف يفرد لفّة القماش أمام الكاميرا، مع نص قصير ورموز تعبيرية. أسلوب صادق يُظهر لمعة القماش وحركته، ويُعاد نشره نفسه على Snapchat.</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-title">❌ ما ينقص المحتوى</div>
+                <div class="pillar-text">لا توجد افتتاحية تشدّ الانتباه في أول ثانيتين، ولا سعر أو اسم القماش أو عدد الأمتار، ولا دعوة لاتخاذ إجراء، ولا يظهر القماش بعد تفصيله فستاناً.</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-title">📸 Instagram</div>
+                <div class="pillar-text">الحساب ضعيف مقارنة بـ TikTok، وهذا مؤثر لأن إعلانات Instagram تعرض الحساب للمستخدم، فيبدو النشاط أصغر من حجمه الحقيقي.</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-title">✅ أصول قابلة للاستثمار</div>
+                <div class="pillar-text">فيديوهات مثبتة أثبتت قابلية الانتشار يمكن استخدامها مباشرة كإعلانات Spark Ads، وقوائم تشغيل منظمة (بانوهات · قطع مميزة) تصلح أساساً لإعلانات الكتالوج.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SWOT -->
+    <div class="section" style="border-top: 4px solid #2a0606;">
+        <h2 class="section-title" style="border-color:#2a0606;">🧭 تحليل SWOT</h2>
+        <div class="section-sub">نقاط القوة والضعف (داخلية) — الفرص والتهديدات (خارجية)</div>
+
+        <div class="swot-grid">
+            <div class="swot-card s">
+                <div class="swot-head"><div class="swot-letter">S</div><div class="swot-title">نقاط القوة</div></div>
+                <ul class="swot-list">
+                    <li><b>خبرة تتجاوز 22 عاماً ومعرض فعلي في جدة</b> — ثقة يصعب على المتاجر الإلكترونية فقط مجاراتها.</li>
+                    <li><b>تخصص واضح في المطرزات والشك اليدوي</b> (بانوهات وقطع 3D) بهامش ربح أعلى وتنافس سعري أقل.</li>
+                    <li><b>قاعدة 66K متابع على TikTok</b> وفيديوهات سابقة تجاوزت 870K مشاهدة.</li>
+                    <li>وصف منتجات احترافي للقطع المطرزة، وتقسيط عبر تابي وتمارا.</li>
+                    <li>تشكيلة تخدم مراحل متعددة: القماش بالمتر، القطع الجاهزة للتفصيل، والفساتين الجاهزة.</li>
+                    <li>شحن دولي متاح، مع وجود منتجات موجهة للسوق الخليجي (مرايل كويتية وخليجية).</li>
+                </ul>
+            </div>
+            <div class="swot-card w">
+                <div class="swot-head"><div class="swot-letter">W</div><div class="swot-title">نقاط الضعف</div></div>
+                <ul class="swot-list">
+                    <li><b>محتوى إعلاني غير مهيأ للأداء</b>: بلا افتتاحية أو سعر أو دعوة لاتخاذ إجراء.</li>
+                    <li><b>حساب Instagram ضعيف</b> (146 متابعاً) لا يعكس حجم النشاط.</li>
+                    <li><b>تشتت أرقام التواصل</b> بين ثلاثة أرقام.</li>
+                    <li><b>عروض منتهية ظاهرة</b> في المتجر (اليوم الوطني).</li>
+                    <li>غياب المواصفات الفنية للأقمشة وخيار العينات.</li>
+                    <li><b>مدة توصيل طويلة نسبياً</b>: حتى 8 أيام عمل للمدن الرئيسية (تجهيز + شحن).</li>
+                    <li>لا يوجد شحن مجاني دائم، وقيمة متر العبايات (69 ر.س) منخفضة أمام رسوم الشحن.</li>
+                    <li>تموضع مختلط بين أقمشة وفساتين جاهزة ومرايل مدرسية.</li>
+                </ul>
+            </div>
+            <div class="swot-card o">
+                <div class="swot-head"><div class="swot-letter">O</div><div class="swot-title">الفرص</div></div>
+                <ul class="swot-list">
+                    <li><b>موسم الأعراس الشتوي وإجازة منتصف العام</b> يتزامن مع انطلاق الخطة.</li>
+                    <li><b>رمضان وعيد الفطر 2027</b> (مطلع فبراير تقريباً): قماش العيد يُشترى قبلها بأسابيع لإتاحة وقت التفصيل، ما يمنح نافذة بيع مبكرة.</li>
+                    <li><b>يوم التأسيس (22 فبراير)</b> وطلب الأقمشة التراثية والجلابيات.</li>
+                    <li><b>البحث المحلي في جدة</b> («محل أقمشة جدة»، «أقمشة سهرات جدة») يمكن التقاطه عبر Google وملف النشاط التجاري.</li>
+                    <li><b>المصممات والمشاغل</b> كشريحة شراء متكرر بكميات.</li>
+                    <li>التوسع الخليجي (الكويت أولاً) استناداً إلى الشحن الدولي المتاح.</li>
+                    <li>البث المباشر على TikTok لبيع الأقمشة، وهو أسلوب مناسب لطبيعة المنتج.</li>
+                </ul>
+            </div>
+            <div class="swot-card t">
+                <div class="swot-head"><div class="swot-letter">T</div><div class="swot-title">التهديدات</div></div>
+                <ul class="swot-list">
+                    <li><b>معارض كبيرة في جدة</b> بفرعين وحسابات منفصلة لكل فرع (دار التصاميم).</li>
+                    <li><b>منافسة سعرية</b>: خصومات ظاهرة تصل إلى 40% على التل المطرز لدى الصقعبي.</li>
+                    <li>منافسون يقدّمون عينات وجملة والدفع عند الاستلام (العماري)، وآخرون يقدّمون شحناً مجانياً فوق حد معيّن.</li>
+                    <li><b>طبيعة المنتج الحسية</b>: العميلة تريد لمس القماش ورؤية لونه الحقيقي قبل الشراء.</li>
+                    <li>ارتفاع تكلفة الظهور الإعلاني في موسم رمضان والعيد بسبب ازدحام المعلنين.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPETITOR ANALYSIS -->
+    <div class="section" style="border-top: 4px solid #c3922f;">
+        <h2 class="section-title" style="border-color:#c3922f;">⚔️ تحليل أقرب المنافسين</h2>
+        <div class="section-sub">مقارنة مبنية على ما يظهر في المتاجر وصفحات الروابط — نوفمبر 2026</div>
+
+        <div class="table-wrap">
+        <table class="cmp-table">
+            <thead>
+                <tr>
+                    <th>المعيار</th>
+                    <th class="us">متجر القماش</th>
+                    <th>دار التصاميم للأقمشة</th>
+                    <th>العماري للأقمشة</th>
+                    <th>الصقعبي</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>التموضع</td>
+                    <td class="us">أقمشة سهرات ومطرزات + فساتين جاهزة</td>
+                    <td>«أكبر صالة عرض للأقمشة في جدة»</td>
+                    <td>تشكيلة شاملة بالمتر للتجزئة وبالطاقة للجملة</td>
+                    <td>أقمشة سهرات (تل، تفتا، حرير، جوبير)</td>
+                </tr>
+                <tr>
+                    <td>الحضور الفعلي</td>
+                    <td class="us">معرض في جدة (غير مذكور في المتجر)</td>
+                    <td><span class="badge badge-green">فرعان في جدة</span> المكرونة والصفاء</td>
+                    <td>صفحة «فروعنا» ورقم موحد</td>
+                    <td>غير مذكور على الموقع</td>
+                </tr>
+                <tr>
+                    <td>المتجر الإلكتروني</td>
+                    <td class="us">سلة</td>
+                    <td>لا يظهر متجر في صفحة الروابط — البيع عبر واتساب الفروع</td>
+                    <td>متجر متكامل</td>
+                    <td>زد</td>
+                </tr>
+                <tr>
+                    <td>سياسة الأسعار</td>
+                    <td class="us">قطع فاخرة 396–1,200 ر.س دون خصومات ظاهرة (عدا عروض منتهية)</td>
+                    <td>«أسعار مناسبة»</td>
+                    <td>«أسعار مناسبة» مع مجموعات حصرية</td>
+                    <td>خصومات ظاهرة حتى 40%</td>
+                </tr>
+                <tr>
+                    <td>العينات والجملة</td>
+                    <td class="us"><span class="badge badge-red">غير متوفر</span></td>
+                    <td>غير مذكور</td>
+                    <td><span class="badge badge-green">قسم عينات + جملة</span></td>
+                    <td>غير متوفر</td>
+                </tr>
+                <tr>
+                    <td>وسائل الدفع</td>
+                    <td class="us">تابي، تمارا، مدى، Apple Pay، STC Bank</td>
+                    <td>—</td>
+                    <td>تمارا، مدى، Apple Pay، الدفع عند الاستلام</td>
+                    <td>مدى، Apple Pay، بطاقات</td>
+                </tr>
+                <tr>
+                    <td>المنصات الاجتماعية</td>
+                    <td class="us">TikTok قوي · Snapchat · Instagram ضعيف</td>
+                    <td>TikTok لكل فرع · Snapchat · Instagram · Facebook · X</td>
+                    <td>6 منصات</td>
+                    <td>Instagram · Snapchat</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <div class="comp-grid">
+            <div class="platform-card">
+                <div class="platform-card-title">دار التصاميم للأقمشة <span class="badge badge-red">المنافس المحلي الأقرب</span></div>
+                <div class="platform-card-url">linkfly.to/Darattsamim</div>
+                <div class="mini-label plus">✔ ما يميّزه</div>
+                <ul class="mini-list">
+                    <li>رسالة واضحة حول تجربة المعرض (مساحة واسعة وجلسات مريحة)</li>
+                    <li>فرعان، ولكل فرع حساب TikTok ورقم واتساب ورابط خرائط</li>
+                </ul>
+                <div class="mini-label minus">✘ نقاط ضعفه</div>
+                <ul class="mini-list">
+                    <li>لا يظهر متجر إلكتروني، فيعتمد على المحادثة لإتمام البيع</li>
+                    <li>صعوبة خدمة العملاء خارج جدة</li>
+                </ul>
+            </div>
+            <div class="platform-card">
+                <div class="platform-card-title">العماري للأقمشة <span class="badge badge-olive">الأشمل تشكيلةً</span></div>
+                <div class="platform-card-url">alammari.sa</div>
+                <div class="mini-label plus">✔ ما يميّزه</div>
+                <ul class="mini-list">
+                    <li>قسم عينات يخفف تردد الشراء أونلاين</li>
+                    <li>بيع بالمتر وبالطاقة، والدفع عند الاستلام، ورقم موحد</li>
+                </ul>
+                <div class="mini-label minus">✘ نقاط ضعفه</div>
+                <ul class="mini-list">
+                    <li>تشكيلة عامة أقل تخصصاً في المطرزات الفاخرة</li>
+                    <li>رسالة تسويقية عامة تشبه أي متجر أقمشة</li>
+                </ul>
+            </div>
+            <div class="platform-card">
+                <div class="platform-card-title">الصقعبي <span class="badge badge-red">الأقوى سعرياً</span></div>
+                <div class="platform-card-url">alsagaabi.com</div>
+                <div class="mini-label plus">✔ ما يميّزه</div>
+                <ul class="mini-list">
+                    <li>تخصص في أقمشة السهرات مع خصومات واضحة (تل مطرز 180 ر.س بدلاً من 300)</li>
+                </ul>
+                <div class="mini-label minus">✘ نقاط ضعفه</div>
+                <ul class="mini-list">
+                    <li>محتوى واجهة محدود وحضور على منصتين فقط</li>
+                    <li>تموضع قائم على السعر لا على الحرفية والتفرد</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- OBJECTIVES -->
+    <div class="section" style="border-top: 4px solid #6b1414;">
+        <h2 class="section-title">🎯 أهداف الخطة عبر قمع التسويق</h2>
+        <div class="section-sub">البداية باختبار واتساب، ثم توسيع ما يثبت أفضلية تكلفة الطلب</div>
+        <div class="objective-list">
+            <div class="objective-item">
+                <div class="objective-num">1</div>
+                <div class="objective-body">
+                    <div class="objective-head"><span class="objective-title">المحادثات المؤهلة على واتساب</span><span class="badge badge-olive">Test</span></div>
+                    <div class="objective-text">قياس تكلفة المحادثة ونسبة تحوّلها إلى طلب، لأن مشترية القماش تسأل عادةً عن اللون والعرض وعدد الأمتار قبل الشراء.</div>
+                </div>
+            </div>
+            <div class="objective-item">
+                <div class="objective-num">2</div>
+                <div class="objective-body">
+                    <div class="objective-head"><span class="objective-title">المبيعات عبر المتجر</span><span class="badge badge-olive">BOFU</span></div>
+                    <div class="objective-text">التقاط الباحثين على Google عن أنواع أقمشة محددة، وتحويل مشاهدي TikTok وInstagram إلى طلبات مباشرة.</div>
+                </div>
+            </div>
+            <div class="objective-item">
+                <div class="objective-num">3</div>
+                <div class="objective-body">
+                    <div class="objective-head"><span class="objective-title">زيارات المعرض في جدة</span><span class="badge badge-olive">Local</span></div>
+                    <div class="objective-text">توجيه الباحثات محلياً إلى المعرض عبر طلبات الاتجاهات والاتصال.</div>
+                </div>
+            </div>
+            <div class="objective-item">
+                <div class="objective-num">4</div>
+                <div class="objective-body">
+                    <div class="objective-head"><span class="objective-title">إعادة إحياء قاعدة TikTok وبناء Instagram</span><span class="badge badge-olive">MOFU</span></div>
+                    <div class="objective-text">استعادة الوصول لمتابعي TikTok بمحتوى جديد، ورفع مصداقية حساب Instagram قبل التوسع فيه.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STARTING POINT -->
+    <div class="section" style="border-top: 4px solid #e53935;">
+        <h2 class="section-title" style="border-color:#e53935;">🔴 متطلبات ما قبل الإطلاق</h2>
+
+        <div class="insight-box critical">
+            <div class="insight-title">🔴 المتجر والتواصل</div>
+            <ul class="action-list">
+                <li>إزالة بانر وملصقات «عروض اليوم الوطني» واستبدالها برسالة موسم الأعراس والشتاء</li>
+                <li>توحيد رقم واتساب واحد في المتجر وجميع الحسابات، وتفعيل WhatsApp Business بالكتالوج والردود السريعة</li>
+                <li>إضافة عرض القماش ونسبة الخامة ومقاس القطعة وتعليمات العناية لكل منتج</li>
+                <li>إضافة عنوان المعرض ورابط خرائط Google في المتجر والحسابات</li>
+                <li>تنظيف الوسوم والروابط من الكلمات غير المطابقة</li>
+                <li>توفير شحن مجاني فوق حد أدنى للطلب</li>
+            </ul>
+        </div>
+
+        <div class="insight-box info">
+            <div class="insight-title">⚙️ التتبع</div>
+            <div class="insight-text">ربط Meta Pixel مع Conversions API، وTikTok Pixel، وتحويلات Google من سلة، والتأكد من مطابقة الطلبات لأرقام سلة. ولقياس طلبات واتساب: كود خصم أو تصنيف مخصص لكل قناة إعلانية.</div>
+        </div>
+    </div>
+
+    <!-- WHATSAPP TEST -->
+    <div class="section" style="border-top: 4px solid #16a34a;">
+        <h2 class="section-title" style="border-color:#16a34a;">💬 اختبار واتساب في البداية</h2>
+        <div class="section-sub">أسبوعان إلى ثلاثة أسابيع لتحديد المسار الأقل تكلفة لكل طلب</div>
+
+        <div class="pillar-grid">
+            <div class="pillar-card" style="border-color:#16a34a;">
+                <div class="pillar-title">🧪 تصميم الاختبار</div>
+                <div class="pillar-text">حملة رسائل (Click-to-WhatsApp) على Instagram مقابل حملة شراء من المتجر، بالمحتوى والجمهور نفسيهما، لمقارنة تكلفة الطلب الفعلي في المسارين.</div>
+            </div>
+            <div class="pillar-card" style="border-color:#16a34a;">
+                <div class="pillar-title">🎯 المنتجات المختبرة</div>
+                <div class="pillar-text">البانوهات والقطع المطرزة (قرار شراء يحتاج استشارة)، مقابل أقمشة العبايات بالمتر (قرار أسرع يناسب الشراء المباشر).</div>
+            </div>
+            <div class="pillar-card" style="border-color:#16a34a;">
+                <div class="pillar-title">⏱️ شرط نجاح الاختبار</div>
+                <div class="pillar-text">سرعة رد لا تتجاوز دقائق خلال ساعات العمل، ورسالة ترحيب ترسل الصور والسعر ورابط الطلب مباشرة.</div>
+            </div>
+            <div class="pillar-card" style="border-color:#16a34a;">
+                <div class="pillar-title">📏 ما يُقاس</div>
+                <div class="pillar-text">تكلفة المحادثة، ونسبة المحادثات التي تتحول إلى طلب، ومتوسط قيمة الطلب، ومقارنتها بتكلفة الطلب من المتجر.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BUDGET -->
+    <div class="section" style="border-top: 4px solid #c3922f;">
+        <h2 class="section-title" style="border-color:#c3922f;">💰 توزيع الميزانية الإعلانية</h2>
+        <div class="section-sub">نسب مبدئية تُعاد موازنتها حسب العائد على الإنفاق — تُحدَّد المبالغ بعد الاتفاق على الميزانية</div>
+
+        <div class="table-wrap">
+        <table class="cmp-table" style="min-width:560px;">
+            <thead>
+                <tr><th>القناة</th><th>الشهر الأول</th><th>الشهر الثاني</th><th>الشهر الثالث</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Instagram — واتساب + شراء</td><td>40%</td><td rowspan="3" style="vertical-align:middle;">حسب نتيجة الاختبار والعائد على الإنفاق</td><td rowspan="3" style="vertical-align:middle;">رفع القنوات الأعلى عائداً تزامناً مع موسم رمضان والعيد</td></tr>
+                <tr><td>Google Ads</td><td>30%</td></tr>
+                <tr><td>TikTok</td><td>30%</td></tr>
+                <tr class="grand-total"><td>الإجمالي</td><td>100%</td><td>—</td><td>—</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- ROADMAP -->
+    <div class="section" style="border-top: 4px solid #2a0606;">
+        <h2 class="section-title" style="border-color:#2a0606;">🗓️ مراحل الخطة الإعلانية</h2>
+        <div class="section-sub">كل مرحلة لها هدف واضح وشرط للانتقال إلى المرحلة التالية</div>
+
+        <div class="month-grid">
+            <div class="month-card m1">
+                <div class="month-top">
+                    <div class="month-name">الشهر الأول</div>
+                    <div class="month-theme">الاختبار والانطلاق</div>
+                    <div class="month-budget">موسم الأعراس الشتوي</div>
+                </div>
+                <div class="month-body">
+                    <div class="mini-label">Instagram</div>
+                    <ul>
+                        <li>اختبار واتساب مقابل الشراء من المتجر</li>
+                        <li>تحسين الحساب (صورة، وصف، Highlights للمعرض والآراء)</li>
+                    </ul>
+                    <div class="mini-label">Google Ads</div>
+                    <ul>
+                        <li>حملات بحث على أنواع الأقمشة والاسم التجاري</li>
+                        <li>حملة محلية لجدة لزيارات المعرض</li>
+                    </ul>
+                    <div class="mini-label">TikTok</div>
+                    <ul>
+                        <li>Spark Ads على أعلى الفيديوهات أداءً مع افتتاحيات جديدة</li>
+                    </ul>
+                    <div class="gate">🔓 شرط الانتقال: تحديد المسار الأقل تكلفة لكل طلب (واتساب أو المتجر).</div>
+                </div>
+            </div>
+
+            <div class="month-card m2">
+                <div class="month-top">
+                    <div class="month-name">الشهر الثاني</div>
+                    <div class="month-theme">التحسين والتوسع</div>
+                    <div class="month-budget">إجازة منتصف العام</div>
+                </div>
+                <div class="month-body">
+                    <div class="mini-label">Instagram</div>
+                    <ul>
+                        <li>توسيع المسار الفائز وإيقاف الأضعف</li>
+                        <li>إعادة الاستهداف وإعلانات الكتالوج</li>
+                    </ul>
+                    <div class="mini-label">Google Ads</div>
+                    <ul>
+                        <li>إطلاق Shopping/PMax من كتالوج سلة</li>
+                        <li>تنظيف مصطلحات البحث أسبوعياً</li>
+                    </ul>
+                    <div class="mini-label">TikTok</div>
+                    <ul>
+                        <li>حملات مبيعات بفيديوهات «من القماش إلى الفستان»</li>
+                        <li>تجربة البث المباشر للبيع</li>
+                    </ul>
+                    <div class="gate">🔓 شرط الانتقال: عائد على الإنفاق ثابت أو متحسن لأسبوعين متتاليين.</div>
+                </div>
+            </div>
+
+            <div class="month-card m3">
+                <div class="month-top">
+                    <div class="month-name">الشهر الثالث</div>
+                    <div class="month-theme">موسم رمضان والعيد</div>
+                    <div class="month-budget">+ يوم التأسيس</div>
+                </div>
+                <div class="month-body">
+                    <div class="mini-label">جميع القنوات</div>
+                    <ul>
+                        <li>حملة «قماش العيد» مبكراً قبل ازدحام المشاغل</li>
+                        <li>أقمشة الجلابيات ليوم التأسيس</li>
+                        <li>جمهور مشابه (Lookalike) من قائمة المشترين</li>
+                        <li>اختبار السوق الكويتي بميزانية محدودة</li>
+                    </ul>
+                    <div class="gate">📊 يستمر الرفع ما دام العائد على الإنفاق محافظاً على مستواه.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GOOGLE KEYWORDS -->
+    <div class="section" style="border-top: 4px solid #1565c0;">
+        <h2 class="section-title" style="border-color:#1565c0;">🔍 هيكل كلمات البحث على Google</h2>
+        <div class="section-sub">مجموعات إعلانية حسب القسم — مطابقة عبارة ومطابقة تامة في البداية للتحكم في الإنفاق</div>
+        <div class="kw-grid">
+            <div class="kw-card">
+                <div class="kw-title">✨ المطرزات والبانوهات</div>
+                <div class="kw-tags"><span class="kw-tag">قماش تل مطرز</span><span class="kw-tag">قماش شك يدوي</span><span class="kw-tag">بانو مطرز</span><span class="kw-tag">قماش سهرة فاخر</span></div>
+            </div>
+            <div class="kw-card">
+                <div class="kw-title">🖤 أقمشة العبايات</div>
+                <div class="kw-tags"><span class="kw-tag">قماش عبايات</span><span class="kw-tag">قماش كريب عبايات</span><span class="kw-tag">كريب ياباني</span><span class="kw-tag">قماش لوميير</span></div>
+            </div>
+            <div class="kw-card">
+                <div class="kw-title">🎀 الخامات السادة</div>
+                <div class="kw-tags"><span class="kw-tag">قماش تفتا</span><span class="kw-tag">قماش ساتان</span><span class="kw-tag">قماش دانتيل</span><span class="kw-tag">قماش لينن</span><span class="kw-tag">قماش مخمل</span></div>
+            </div>
+            <div class="kw-card">
+                <div class="kw-title">👗 الفساتين الجاهزة</div>
+                <div class="kw-tags"><span class="kw-tag">فستان سهرة مطرز</span><span class="kw-tag">فستان خطوبة</span><span class="kw-tag">فستان دانتيل</span></div>
+            </div>
+            <div class="kw-card">
+                <div class="kw-title">📍 محلي — جدة</div>
+                <div class="kw-tags"><span class="kw-tag">محل أقمشة جدة</span><span class="kw-tag">أقمشة سهرات جدة</span><span class="kw-tag">محلات قماش قريب مني</span></div>
+            </div>
+            <div class="kw-card neg">
+                <div class="kw-title">⛔ كلمات سلبية مبدئية</div>
+                <div class="kw-tags"><span class="kw-tag">ستائر</span><span class="kw-tag">كنب</span><span class="kw-tag">مفروشات</span><span class="kw-tag">تنجيد</span><span class="kw-tag">وظائف</span><span class="kw-tag">دورة خياطة</span><span class="kw-tag">باترون مجاني</span><span class="kw-tag">مكينة خياطة</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="section" style="border-top: 4px solid #6b1414;">
+        <h2 class="section-title">🎬 المحتوى الإعلاني على TikTok وInstagram</h2>
+        <div class="section-sub">البناء على أسلوب فرد القماش الحالي مع إضافة ما ينقصه للأداء</div>
+        <div class="pillar-grid">
+            <div class="pillar-card">
+                <div class="pillar-title">👗 من القماش إلى الفستان</div>
+                <div class="pillar-text">القماش في المعرض ثم الفستان بعد تفصيله — يجيب عن سؤال «كيف سيبدو؟» وهو أكبر عائق للشراء.</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-title">✋ فرد القماش بصيغة إعلانية</div>
+                <div class="pillar-text">الأسلوب الحالي نفسه مع افتتاحية في أول ثانيتين، واسم القماش وسعره على الشاشة، ودعوة واضحة للطلب.</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-title">🔍 الشك اليدوي عن قرب</div>
+                <div class="pillar-text">لقطات ماكرو للكريستال والورود المجسمة تحت الإضاءة — تبرّر سعر البانوهات.</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-title">📐 كم متر أحتاج؟</div>
+                <div class="pillar-text">محتوى تعليمي قصير عن الأمتار المطلوبة لكل تصميم — يبني الثقة ويرفع قيمة الطلب.</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-title">🏪 زيارة المعرض</div>
+                <div class="pillar-text">جولة في معرض مجمع الشرق مع طريقة الوصول — يخدم هدف الزيارات ويؤكد أن خلف المتجر نشاطاً قائماً.</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-title">🔴 البث المباشر</div>
+                <div class="pillar-text">عرض القطع الجديدة مباشرة والرد على أسئلة اللون والخامة، مع رابط الطلب أو واتساب.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OFFERS & RETARGETING -->
+    <div class="section" style="border-top: 4px solid #0891b2;">
+        <h2 class="section-title" style="border-color:#0891b2;">🎁 أفكار العروض وإعادة الاستهداف</h2>
+
+        <div class="section-sub" style="margin-bottom:10px;">أفكار العروض — قائمة على القيمة لا على الخصم العميق</div>
+        <div class="idea-grid" style="margin-bottom:22px;">
+            <div class="idea-card" style="border-color:#6b1414;">
+                <div class="idea-title" style="color:#4a0d0d;"><span class="idea-num" style="background:#6b1414;">1</span>طقم التفصيل</div>
+                <div class="idea-text">بانو مطرز + قماش سادة مطابق + بطانة بسعر طقم.</div>
+            </div>
+            <div class="idea-card" style="border-color:#6b1414;">
+                <div class="idea-title" style="color:#4a0d0d;"><span class="idea-num" style="background:#6b1414;">2</span>عينات مستردّة القيمة</div>
+                <div class="idea-text">عينات قماش برسوم رمزية تُخصم من الطلب التالي.</div>
+            </div>
+            <div class="idea-card" style="border-color:#6b1414;">
+                <div class="idea-title" style="color:#4a0d0d;"><span class="idea-num" style="background:#6b1414;">3</span>شحن مجاني بحد أدنى للطلب</div>
+                <div class="idea-text">يرفع قيمة السلة، خاصة مع أقمشة العبايات منخفضة السعر.</div>
+            </div>
+            <div class="idea-card" style="border-color:#6b1414;">
+                <div class="idea-title" style="color:#4a0d0d;"><span class="idea-num" style="background:#6b1414;">4</span>حجز قماش العيد مبكراً</div>
+                <div class="idea-text">حافز للطلب قبل رمضان لإتاحة وقت التفصيل.</div>
+            </div>
+            <div class="idea-card" style="border-color:#6b1414;">
+                <div class="idea-title" style="color:#4a0d0d;"><span class="idea-num" style="background:#6b1414;">5</span>برنامج المصممات والمشاغل</div>
+                <div class="idea-text">خصم دائم مقابل الطلب المتكرر أو الكميات.</div>
+            </div>
+        </div>
+
+        <div class="section-sub" style="margin-bottom:10px;">أفكار إعادة الاستهداف (Retargeting)</div>
+        <div class="idea-grid">
+            <div class="idea-card" style="border-color:#0891b2;">
+                <div class="idea-title" style="color:#0e7490;"><span class="idea-num" style="background:#0891b2;">1</span>زوار المنتجات دون شراء</div>
+                <div class="idea-text">إعلانات كتالوج تعرض القطع نفسها التي تصفّحتها الزائرة.</div>
+            </div>
+            <div class="idea-card" style="border-color:#0891b2;">
+                <div class="idea-title" style="color:#0e7490;"><span class="idea-num" style="background:#0891b2;">2</span>السلات المتروكة</div>
+                <div class="idea-text">تذكير مع إبراز التقسيط وفيديو القطعة بعد التفصيل.</div>
+            </div>
+            <div class="idea-card" style="border-color:#0891b2;">
+                <div class="idea-title" style="color:#0e7490;"><span class="idea-num" style="background:#0891b2;">3</span>مستفسرات واتساب</div>
+                <div class="idea-text">متابعة من سألت ولم تكمل، برابط مباشر للمنتج.</div>
+            </div>
+            <div class="idea-card" style="border-color:#0891b2;">
+                <div class="idea-title" style="color:#0e7490;"><span class="idea-num" style="background:#0891b2;">4</span>مشاهدات TikTok</div>
+                <div class="idea-text">من شاهد 50% من فيديوهات القماش، بإعلان تحويل مباشر.</div>
+            </div>
+            <div class="idea-card" style="border-color:#0891b2;">
+                <div class="idea-title" style="color:#0e7490;"><span class="idea-num" style="background:#0891b2;">5</span>المشترون السابقون</div>
+                <div class="idea-text">إشعار بالقطع الجديدة قبل المواسم (العيد، الأعراس).</div>
+            </div>
+            <div class="idea-card" style="border-color:#0891b2;">
+                <div class="idea-title" style="color:#0e7490;"><span class="idea-num" style="background:#0891b2;">6</span>جمهور مشابه (Lookalike)</div>
+                <div class="idea-text">يُبنى من قائمة المشترين فور توفر عدد كافٍ من الطلبات.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHALLENGES -->
+    <div class="section" style="border-top: 4px solid #dc2626;">
+        <h2 class="section-title" style="border-color:#dc2626;">🧗 التحديات المتوقعة وطريقة التعامل معها</h2>
+        <div class="challenge-grid">
+            <div class="challenge-card">
+                <div class="challenge-title">طبيعة القماش الحسية <span class="badge badge-red">مرتفع</span></div>
+                <div class="challenge-text">العميلة تريد لمس القماش ورؤية لونه الحقيقي، ما يرفع التردد وتكلفة الطلب أونلاين.</div>
+                <div class="challenge-fix">فيديو لكل قطعة تحت إضاءة طبيعية، ومواصفات كاملة، وعينات، وواتساب للاستشارة.</div>
+            </div>
+            <div class="challenge-card">
+                <div class="challenge-title">تراجع الوصول على TikTok <span class="badge badge-red">مرتفع</span></div>
+                <div class="challenge-text">المحتوى الحالي لا يصل حتى للمتابعين، وتكرار الأسلوب نفسه في الإعلانات يرفع التكلفة.</div>
+                <div class="challenge-fix">افتتاحيات جديدة، وتنويع الزوايا، واختبار عدة نسخ أسبوعياً.</div>
+            </div>
+            <div class="challenge-card">
+                <div class="challenge-title">قياس طلبات واتساب والمعرض <span class="badge badge-red">مرتفع</span></div>
+                <div class="challenge-text">الطلبات المغلقة عبر المحادثة أو في المعرض لا تظهر في أرقام المنصات الإعلانية.</div>
+                <div class="challenge-fix">رقم موحد، وتصنيفات للمحادثات، وكود لكل قناة، وتسجيل الطلبات في سلة.</div>
+            </div>
+            <div class="challenge-card mid">
+                <div class="challenge-title">ضعف حساب Instagram <span class="badge badge-gold">متوسط</span></div>
+                <div class="challenge-text">146 متابعاً فقط، والحساب يظهر مع كل إعلان على المنصة.</div>
+                <div class="challenge-fix">نقل أفضل محتوى TikTok إليه، وإضافة Highlights للآراء والمعرض قبل الإطلاق.</div>
+            </div>
+            <div class="challenge-card mid">
+                <div class="challenge-title">مدة التوصيل <span class="badge badge-gold">متوسط</span></div>
+                <div class="challenge-text">حتى 8 أيام عمل للمدن الرئيسية، وهو حساس لمن تشتري لمناسبة قريبة.</div>
+                <div class="challenge-fix">تقليص مدة التجهيز، وتوفير الاستلام من المعرض لعميلات جدة، وإعلان مدة واضحة.</div>
+            </div>
+            <div class="challenge-card mid">
+                <div class="challenge-title">المنافسة السعرية <span class="badge badge-gold">متوسط</span></div>
+                <div class="challenge-text">منافسون بخصومات تصل إلى 40% وشحن مجاني فوق حد معيّن.</div>
+                <div class="challenge-fix">رسالة قائمة على التفرد والشك اليدوي والخبرة، وعروض قيمة بدل الخصم العميق.</div>
+            </div>
+            <div class="challenge-card mid">
+                <div class="challenge-title">ارتفاع التكلفة في رمضان <span class="badge badge-gold">متوسط</span></div>
+                <div class="challenge-text">ازدحام المعلنين قبل العيد يرفع تكلفة الظهور.</div>
+                <div class="challenge-fix">بناء جماهير إعادة الاستهداف مبكراً، والبدء بحملة العيد قبل الذروة.</div>
+            </div>
+            <div class="challenge-card mid">
+                <div class="challenge-title">تشتت التموضع <span class="badge badge-gold">متوسط</span></div>
+                <div class="challenge-text">أقمشة وفساتين جاهزة ومرايل مدرسية في متجر واحد.</div>
+                <div class="challenge-fix">قيادة الإعلانات بالمطرزات وأقمشة السهرات، وتشغيل المرايل موسمياً فقط.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="section" style="border-top: 4px solid #1b5e20;">
+        <h2 class="section-title" style="border-color:#1b5e20;">📊 مؤشرات الأداء الرئيسية (KPIs)</h2>
+        <div class="section-sub">تُحدَّد القيم المستهدفة بنهاية الشهر الأول بناءً على متوسط قيمة الطلب الفعلي من سلة</div>
+        <div class="table-wrap">
+        <table class="cmp-table" style="min-width:560px;">
+            <thead><tr><th>المؤشر</th><th>القناة</th><th>قاعدة القرار</th></tr></thead>
+            <tbody>
+                <tr><td>العائد على الإنفاق (ROAS)</td><td>جميع القنوات</td><td>المرجع الأساسي لرفع أو خفض الميزانية، ويُقاس من أرقام سلة</td></tr>
+                <tr><td>تكلفة الطلب (CPA)</td><td>جميع القنوات</td><td>إعلان أو كلمة تنفق ضعف المستهدف دون تحويل يُوقف</td></tr>
+                <tr><td>تكلفة المحادثة</td><td>واتساب</td><td>تُقرأ مع نسبة التحويل إلى طلب، لا وحدها</td></tr>
+                <tr><td>نسبة المحادثة إلى طلب</td><td>واتساب</td><td>تحدد جدوى الاستمرار في مسار واتساب مقابل المتجر</td></tr>
+                <tr><td>نسبة مشاهدة أول ثانيتين</td><td>TikTok · Instagram</td><td>تحدد الافتتاحيات الأقوى لإعادة استخدامها</td></tr>
+                <tr><td>متوسط قيمة الطلب (AOV)</td><td>المتجر</td><td>يقيس أثر الأطقم والشحن المجاني بحد أدنى</td></tr>
+                <tr><td>الاتصالات وطلبات الاتجاهات</td><td>Google</td><td>تقيس أثر الحملة المحلية على زيارات المعرض</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- WHAT WE WILL WORK ON -->
+    <div class="section" style="border-top: 4px solid #2a0606;">
+        <h2 class="section-title" style="border-color:#2a0606;">🛠️ ما سيتم العمل عليه</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:24px;">
+            <div style="padding:16px;background:#fbf4f4;border-radius:10px;border-right:4px solid #6b1414;">
+                <div style="font-size:13px;font-weight:700;color:#4a0d0d;margin-bottom:8px;">1. تجهيز المتجر والتتبع</div>
+                <div style="font-size:12px;color:#4a0d0d;line-height:1.7;">العمل على معالجة ملاحظات المتجر وتوحيد رقم التواصل وربط أدوات التتبع قبل تشغيل أي إنفاق.</div>
+            </div>
+            <div style="padding:16px;background:#f0fdf4;border-radius:10px;border-right:4px solid #22c55e;">
+                <div style="font-size:13px;font-weight:700;color:#14532d;margin-bottom:8px;">2. اختبار واتساب ثم الإطلاق</div>
+                <div style="font-size:12px;color:#064e3b;line-height:1.7;">العمل على تشغيل اختبار واتساب، ثم توزيع الميزانية على Google وTikTok وInstagram حسب نتائجه.</div>
+            </div>
+            <div style="padding:16px;background:#eff6ff;border-radius:10px;border-right:4px solid #2563eb;">
+                <div style="font-size:13px;font-weight:700;color:#1e40af;margin-bottom:8px;">3. متابعة وتقارير دورية</div>
+                <div style="font-size:12px;color:#1e3a8a;line-height:1.7;">توفير تقرير أداء دوري يقارن النتائج بالمستهدف، ويحدد خطوة الرفع التالية في الميزانية.</div>
+            </div>
+        </div>
+
+        <div class="section-sub" style="margin-bottom:10px;padding-right:0;">اختبارات الأداء المخطط لها</div>
+        <div class="idea-grid">
+            <div class="idea-card" style="border-color:#2a0606;">
+                <div class="idea-title" style="color:#2a0606;"><span class="idea-num" style="background:#2a0606;">1</span>اختبار الوجهة</div>
+                <div class="idea-text">واتساب مقابل صفحة المنتج، بالمحتوى والجمهور نفسيهما.</div>
+            </div>
+            <div class="idea-card" style="border-color:#2a0606;">
+                <div class="idea-title" style="color:#2a0606;"><span class="idea-num" style="background:#2a0606;">2</span>اختبار المحتوى</div>
+                <div class="idea-text">فرد القماش مقابل «من القماش إلى الفستان» مقابل لقطات الشك اليدوي.</div>
+            </div>
+            <div class="idea-card" style="border-color:#2a0606;">
+                <div class="idea-title" style="color:#2a0606;"><span class="idea-num" style="background:#2a0606;">3</span>اختبار النطاق الجغرافي</div>
+                <div class="idea-text">جدة وحدها مقابل المملكة كاملة، لقياس أثر قرب المعرض.</div>
+            </div>
+            <div class="idea-card" style="border-color:#2a0606;">
+                <div class="idea-title" style="color:#2a0606;"><span class="idea-num" style="background:#2a0606;">4</span>اختبار الرسالة</div>
+                <div class="idea-text">«22 عاماً من الخبرة والتفرد» مقابل رسالة السعر والتقسيط.</div>
+            </div>
+            <div class="idea-card" style="border-color:#2a0606;">
+                <div class="idea-title" style="color:#2a0606;"><span class="idea-num" style="background:#2a0606;">5</span>اختبار الفئة</div>
+                <div class="idea-text">البانوهات المطرزة مقابل أقمشة العبايات بالمتر، لتحديد الفئة الأعلى عائداً.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="text-align:center;padding:20px;color:#94a3b8;font-size:12px;">
+        إعداد: <a href="https://wa.me/201558636063" style="color:#6b1414;text-decoration:none;font-weight:700;">Ahmed Shaaban — أحمد شعبان</a> · أخصائي تسويق الأداء (Performance Marketer)
+    </div>
+
+</div>
+</body>
+</html>
